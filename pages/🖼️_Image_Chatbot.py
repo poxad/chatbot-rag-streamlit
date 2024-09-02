@@ -48,7 +48,7 @@ def get_file_text(files):
             results = reader.readtext(np.array(image))
             for i in results:
                 text += i[1] + " "
-    st.write(text)
+    # st.write(text)
     return text
 
 def get_text_chunks(text):
@@ -150,11 +150,8 @@ with st.sidebar:
     if st.button("Submit & Process", key="process_button", disabled=not image_files):
         with st.spinner("Processing..."):
             raw_text = get_file_text(image_files)
-            st.write(raw_text)
             text_chunks = get_text_chunks(raw_text)
-            st.write("test")
             get_vector_store(text_chunks, api_key)
-            st.success("Done")
 
     
     st.session_state.chat_title = f'Image-{datetime.datetime.now().strftime("%Y-%m-%d %H:%M")}'
@@ -193,7 +190,6 @@ for message in st.session_state.messages:
 
 
 if prompt := st.chat_input('Your message here...'):
-    
     # Save this as a chat for later
     if st.session_state.chat_id not in past_chats.keys():
         past_chats[st.session_state.chat_id] = st.session_state.chat_title
@@ -230,6 +226,3 @@ if prompt := st.chat_input('Your message here...'):
     # Save to file
     joblib.dump(st.session_state.messages, f'data/{st.session_state.chat_id}-st_messages')
     joblib.dump(st.session_state.gemini_history, f'data/{st.session_state.chat_id}-gemini_messages')
-
-
-# print(st.session_state)

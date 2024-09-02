@@ -98,16 +98,13 @@ def get_conversational_chain():
     chain = load_qa_chain(model, chain_type="stuff", prompt=prompt)
     return chain
 
-def user_input(user_question, api_key,image_file):
-    if(image_file):
-        model = genai.GenerativeModel('gemini-1.5-flash')
-        response = model.generate_content([user_question, image_file])
-    else:
-        embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key=api_key)
-        new_db = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
-        docs = new_db.similarity_search(user_question)
-        chain = get_conversational_chain()
-        response = chain({"input_documents": docs, "question": user_question}, return_only_outputs=True)
+def user_input(user_question, api_key):
+
+    embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001", google_api_key=api_key)
+    new_db = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
+    docs = new_db.similarity_search(user_question)
+    chain = get_conversational_chain()
+    response = chain({"input_documents": docs, "question": user_question}, return_only_outputs=True)
     return response["output_text"]
 
 
@@ -148,14 +145,12 @@ with st.sidebar:
     st.write('# Sidebar Menu')
 
     if st.session_state.get('chat_id') is None:
-        st.write(past_chats.keys())
         st.session_state.chat_id = st.selectbox(
             label='Pick a past chat',
             options=[new_chat_id] + list(past_chats.keys()),
             format_func=lambda x: past_chats.get(x, 'New Chat'),
             placeholder='_',
         )
-        st.write(st.session_state)
     else:
         # This will happen the first time AI response comes in
         st.session_state.chat_id = st.selectbox(
@@ -170,8 +165,8 @@ with st.sidebar:
         modal()
 
     pdf_files = st.file_uploader("Upload your PDF Files and Click on the Submit & Process Button", accept_multiple_files=True, type=['pdf','csv'])
-    image_files =st.file_uploader("Upload your Image Files and Click on the Submit & Process Button", accept_multiple_files=True, type=['png','jpg','jpeg'])
-    files_uploaded = pdf_files or image_files
+    # image_files =st.file_uploader("Upload your Image Files and Click on the Submit & Process Button", accept_multiple_files=True, type=['png','jpg','jpeg'])
+    files_uploaded = pdf_files
 
     if st.button("Submit & Process", key="process_button", disabled=not files_uploaded):
         with st.spinner("Processing..."):
@@ -180,11 +175,7 @@ with st.sidebar:
                 text_chunks = get_text_chunks(raw_text)
                 get_vector_store(text_chunks, api_key)
                 st.success("Done")
-            elif(image_files):
-               for image_file in image_files:
-                    image_link.append(image_file)
-                    st.write(image_link)
-                    st.success("Done")
+ 
     # Save new chats after a message has been sent to AI
     # Set chat title with current date and time
     st.session_state.chat_title = f'PDF-{datetime.datetime.now().strftime("%Y-%m-%d %H:%M")}'
@@ -239,7 +230,7 @@ if prompt := st.chat_input('Your message here...'):
     # st.write(image_files)
 
     with st.spinner("Waiting for AI response..."):
-        response = user_input(prompt, api_key, image_files)
+        response = user_input(prompt, api_key)
         
     # Display assistant response in chat message container
     with st.chat_message(
