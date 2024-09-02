@@ -1,71 +1,34 @@
-# Gemini Chatbot Interface with Streamlit
+# Gemini AI Chatbot with Enhanced Context
 
 ## Overview
 
-This project is a Streamlit-based chat application that interacts with the Gemini AI model, allowing users to engage in conversations with an artificial intelligence assistant. The application stores chat history, allowing users to revisit and continue previous conversations.
+This project is a Streamlit-based chat application that interacts with the Google Gemini AI model, providing users with a powerful and flexible AI assistant. The chatbot allows users to engage in dynamic conversations and enhances its contextual understanding by allowing users to upload images and PDFs. The application also supports chat history, enabling users to revisit and continue previous conversations.
 
 <div align="center"><img src="docs/gemini-chatbot.gif" width="800"></div>
 
 ## Getting Started
 
-### Dependencies
+### Features
 
-This code uses the following libraries:
-
-- `streamlit`: for building the user interface. 
-- `gemini`: for chat  
-- Gemini API key: Get it from [Google AI Studio](https://ai.google.dev/tutorials/setup?hl=tr)
-
+Conversational AI: Engage in detailed and expressive conversations with the Gemini AI model.
+Chat History: Save and revisit past chats for continuity in conversations.
+Contextual Uploads: Upload images and PDF files to provide additional context for the AI, enriching the conversation.
+Custom Prompts: Ask questions or provide prompts to guide the AI's responses.
+Clear Chat History: Easily clear past chats and start fresh whenever needed.
 
 ### Usage
 
 Follow these steps to set up and run the project:
 
-1. Create a virtual environment:
-```
-python3 -m venv my_env
-source my_env/bin/activate 
-.\my_env\Scripts\activate 
-```
-
-2. Install dependencies:
+1. Install dependencies:
 ```
 pip install -r requirements.txt
 ```
 
-3. Run the Streamlit server:
+2. Run the Streamlit server:
 ```
-streamlit run app_chat.py
-```
-
-4. Access the application in your browser at http://localhost:8501.
-
-5. Start chatting with the assistant!
-
-## Repository Structure
-```
-repository/
-├── app_chat.py               # the code and UI integrated together live here
-├── requirements.txt     # the python packages needed to run locally
-├── .streamlit/
-│   └── config.toml      # theme info for the UI
-├── data/                # folder for saved chat messages 
-├── docs/                # preview for github
-
+streamlit run Home_Page.py
 ```
 
-## How it Works
+3. Access the application in your browser
 
-The app as follows:
-
-1. The user enters a question in the input field.
-
-2. User messages are sent to the Gemini model for processing.
-
-3. The user's input, along with the chat history, is used to generate a response.
-
-4. The Gemini model generates a response based on the patterns it learned during training.
-
-5. The application saves chat messages and Gemini AI chat history to files for later retrieval.
-
-6. A new chat is created if the user initiates a conversation that hasn't been stored before, or user can go back to past chats.
