@@ -9,3 +9,4 @@ PyPDF2
 easyocr
 python-dotenv
 streamlit_option_menu
+pdf2image
