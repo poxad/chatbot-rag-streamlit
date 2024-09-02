@@ -7,4 +7,4 @@ langchain-community
 pathlib
 PyPDF2
 easyocr
-dotenv
+python-dotenv
