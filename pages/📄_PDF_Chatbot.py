@@ -164,7 +164,7 @@ with st.sidebar:
         # st.write(st.session_state)
         modal()
 
-    pdf_files = st.file_uploader("Upload your PDF Files and Click on the Submit & Process Button", accept_multiple_files=True, type=['pdf','csv'])
+    pdf_files = st.file_uploader("Upload your PDF Files and Click on the Submit & Process Button", accept_multiple_files=True, type=['pdf'])
     # image_files =st.file_uploader("Upload your Image Files and Click on the Submit & Process Button", accept_multiple_files=True, type=['png','jpg','jpeg'])
     files_uploaded = pdf_files
 
