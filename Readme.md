@@ -4,7 +4,7 @@
 
 This project is a Streamlit-based chat application that interacts with the Google Gemini AI model, providing users with a powerful and flexible AI assistant. The chatbot allows users to engage in dynamic conversations and enhances its contextual understanding by allowing users to upload images and PDFs. The application also supports chat history, enabling users to revisit and continue previous conversations.
 
-<div align="center"><img src="assets/chatbot-snippet.PNG" width="800"></div>
+<div align="center"><img src="assets/streamlit-full-version.mp4" width="800"></div>
 
 ## Getting Started
 
