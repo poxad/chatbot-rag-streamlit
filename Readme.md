@@ -9,7 +9,9 @@ https://github.com/user-attachments/assets/ff545378-8f85-4738-9c43-582f40a3d1b2
 
 
 ## Getting Started
+### Disclaimer
 
+The features in this chatbot are not as complete as shown in the video, missing features: Admin Panel and Database Chatbot. This is not shown here due to privacy reasons and due to simplitcity. 
 ### Features
 
 Conversational AI: Engage in detailed and expressive conversations with the Gemini AI model.
