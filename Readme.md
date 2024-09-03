@@ -11,9 +11,13 @@ This project is a Streamlit-based chat application that interacts with the Googl
 ### Features
 
 Conversational AI: Engage in detailed and expressive conversations with the Gemini AI model.
+
 Chat History: Save and revisit past chats for continuity in conversations.
+
 Contextual Uploads: Upload images and PDF files to provide additional context for the AI, enriching the conversation.
+
 Custom Prompts: Ask questions or provide prompts to guide the AI's responses.
+
 Clear Chat History: Easily clear past chats and start fresh whenever needed.
 
 ### Usage
