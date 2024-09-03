@@ -1,4 +1,4 @@
-# Gemini AI Chatbot with Enhanced Context
+# RAG Gemini AI Chatbot built with Streamlit
 
 ## Overview
 
